@@ -215,39 +215,32 @@ body {
     display: block;
 }
 
-.nav-buttons.three-buttons {
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.nav-buttons.three-buttons {
+/* --- Responsive Résultat : Boutons bien espacés --- */
+.nav-buttons.result-buttons {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     gap: 16px;
     margin-top: 30px;
 }
 
-.nav-buttons.three-buttons .btn {
+.nav-buttons.result-buttons .btn {
     width: 100%;
     text-align: center;
     text-decoration: none;
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 16px;
     box-sizing: border-box;
 }
 
-
 @media (max-width: 600px) {
-    .nav-buttons.three-buttons {
-        flex-direction: column;
-        gap: 12px;
+    .nav-buttons.result-buttons {
+        gap: 16px;
     }
 
-    .nav-buttons.three-buttons .btn {
+    .nav-buttons.result-buttons .btn {
         width: 100%;
     }
 }
-
-
