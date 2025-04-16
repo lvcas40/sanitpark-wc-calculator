@@ -215,14 +215,30 @@ body {
     display: block;
 }
 
+.nav-buttons.three-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-buttons.three-buttons .btn {
+    flex: 1 1 30%;
+    text-align: center;
+    text-decoration: none;
+}
+
 @media (max-width: 600px) {
-    .nav-buttons {
-        flex-direction: column !important;
-        align-items: stretch;
+    .nav-buttons.three-buttons {
+        flex-direction: column;
+        gap: 12px;
     }
 
-    .nav-buttons .btn {
+    .nav-buttons.three-buttons .btn {
         width: 100%;
     }
 }
+
 
