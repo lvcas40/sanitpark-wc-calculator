@@ -95,7 +95,7 @@ function updateProgressBar(pageNumber) {
     });
     
     // Activer les étapes jusqu'à la page courante
-    for (let i = a1; i <= pageNumber; i++) {
+    for (let i = 1; i <= pageNumber; i++) {
         document.getElementById('step' + i).classList.add('active');
         if (i < pageNumber) {
             document.getElementById('line' + i).classList.add('active');
@@ -334,27 +334,8 @@ function resetCalculator() {
     goToPage(1);
 }
 
-// Correction d'une petite erreur dans le script original
+// Initialisation au chargement de la page
 document.addEventListener('DOMContentLoaded', function() {
-    // Le code est correct, mais il y a une erreur dans updateProgressBar
-    // Modifions la fonction pour corriger l'erreur
+    // S'assurer que tous les éléments sont bien configurés au démarrage
+    goToPage(1);
 });
-
-// Corriger cette ligne dans updateProgressBar (la variable "a1" n'existe pas)
-function updateProgressBar(pageNumber) {
-    // Réinitialiser les étapes
-    document.querySelectorAll('.step-number').forEach(step => {
-        step.classList.remove('active');
-    });
-    document.querySelectorAll('.progress-line').forEach(line => {
-        line.classList.remove('active');
-    });
-    
-    // Activer les étapes jusqu'à la page courante
-    for (let i = 1; i <= pageNumber; i++) { // Correction de a1 en 1
-        document.getElementById('step' + i).classList.add('active');
-        if (i < pageNumber) {
-            document.getElementById('line' + i).classList.add('active');
-        }
-    }
-}
