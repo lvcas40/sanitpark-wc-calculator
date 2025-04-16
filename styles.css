@@ -224,11 +224,20 @@ body {
     justify-content: center;
 }
 
+.nav-buttons.three-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 30px;
+}
+
 .nav-buttons.three-buttons .btn {
-    flex: 1 1 30%;
+    width: 100%;
     text-align: center;
     text-decoration: none;
+    box-sizing: border-box;
 }
+
 
 @media (max-width: 600px) {
     .nav-buttons.three-buttons {
