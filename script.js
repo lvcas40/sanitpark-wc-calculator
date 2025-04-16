@@ -14,18 +14,18 @@ function logError(error) {
 // Sélection de catégorie
 function selectCategory(category, button) {
     selectedCategory = category;
-    
+
     // Désélectionner tous les boutons
     document.querySelectorAll('.category-button').forEach(btn => {
         btn.classList.remove('selected');
     });
-    
+
     // Sélectionner le bouton cliqué
     button.classList.add('selected');
-    
+
     // Activer le bouton suivant
     document.getElementById('nextBtn1').classList.remove('btn-disabled');
-    
+
     // Configurer les options de la page 3 selon la catégorie
     if (category === 'evenementiel') {
         document.getElementById('dureeJoursGroup').style.display = 'none';
@@ -40,7 +40,7 @@ function selectCategory(category, button) {
         document.getElementById('dureeEvenementGroup').style.display = 'none';
         document.getElementById('recapDureeJours').style.display = 'block';
         document.getElementById('recapDureeEvent').style.display = 'none';
-        
+
         if (category === 'chantier') {
             document.getElementById('proportionHommesGroup').style.display = 'block';
             document.getElementById('recapProportion').style.display = 'block';
@@ -51,10 +51,9 @@ function selectCategory(category, button) {
     }
 }
 
-// Vérifier la validité du nombre de personnes
 function checkPersonnes() {
     nombrePersonnes = parseInt(document.getElementById('nombrePersonnes').value) || 0;
-    
+
     if (nombrePersonnes > 0) {
         document.getElementById('nextBtn2').classList.remove('btn-disabled');
     } else {
@@ -62,46 +61,38 @@ function checkPersonnes() {
     }
 }
 
-// Changer la page
 function goToPage(pageNumber) {
     console.log("Navigation vers la page", pageNumber);
-    
+
     if (pageNumber === 2 && document.getElementById('nextBtn1').classList.contains('btn-disabled')) {
         return;
     }
-    
+
     if (pageNumber === 3 && document.getElementById('nextBtn2').classList.contains('btn-disabled')) {
         return;
     }
-    
-    // Masquer toutes les pages
+
     document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
     });
-    
-    // Afficher la page demandée
+
     document.getElementById('page' + pageNumber).classList.add('active');
-    
-    // Mettre à jour la barre de progression
+
     updateProgressBar(pageNumber);
-    
-    // Mettre à jour les variables selon les entrées
+
     if (pageNumber === 3) {
         dureeJours = parseInt(document.getElementById('dureeJours').value) || 1;
     }
 }
 
-// Mettre à jour la barre de progression
 function updateProgressBar(pageNumber) {
-    // Réinitialiser les étapes
     document.querySelectorAll('.step-number').forEach(step => {
         step.classList.remove('active');
     });
     document.querySelectorAll('.progress-line').forEach(line => {
         line.classList.remove('active');
     });
-    
-    // Activer les étapes jusqu'à la page courante
+
     for (let i = 1; i <= pageNumber; i++) {
         document.getElementById('step' + i).classList.add('active');
         if (i < pageNumber) {
@@ -110,37 +101,29 @@ function updateProgressBar(pageNumber) {
     }
 }
 
-// Définir le genre
 function setGenre(value) {
     genre = value;
 }
 
-// Définir la durée d'événement
 function setDureeEvenement() {
     dureeSuperieureA6h = document.getElementById('dureeEvenement').value === 'superieur';
 }
 
-// Mettre à jour la proportion hommes/femmes
 function updateProportion() {
     proportionHommes = parseInt(document.getElementById('proportionHommes').value);
     document.getElementById('proportionLabel').textContent = 
         proportionHommes + '% hommes, ' + (100 - proportionHommes) + '% femmes';
 }
 
-// Calculer le résultat
 function calculerResultat() {
     console.log("Calcul du résultat...");
-    
-    // Récupérer les valeurs finales des champs
     dureeJours = parseInt(document.getElementById('dureeJours').value) || 1;
-    
-    // Calculer le nombre de WC nécessaires
+
     let resultat = calculateWC();
     console.log("Résultat calculé:", resultat);
-    
-    // Afficher les résultats
+
     document.getElementById('resultatWC').textContent = resultat.total;
-    
+
     if ((selectedCategory === 'chantier' || selectedCategory === 'industrie') && genre === 'separe') {
         document.getElementById('detailsGenre').style.display = 'block';
         document.getElementById('resultHommes').textContent = resultat.hommes;
@@ -148,163 +131,75 @@ function calculerResultat() {
     } else {
         document.getElementById('detailsGenre').style.display = 'none';
     }
-    
-    // Afficher le récapitulatif
+
     const categorieNames = {
         'evenementiel': 'Événementiel',
         'industrie': 'Industrie',
         'chantier': 'Chantiers'
     };
-    
+
     document.getElementById('recapCategorie').textContent = categorieNames[selectedCategory] || selectedCategory;
     document.getElementById('recapNbPersonnes').textContent = nombrePersonnes;
     document.getElementById('recapGenre').textContent = genre === 'mixte' ? 'WC mixtes' : 'WC séparés H/F';
-    
+
     if (selectedCategory === 'evenementiel') {
         document.getElementById('recapDureeEventValue').textContent = dureeSuperieureA6h ? 'Supérieure à 6h' : 'Inférieure à 6h';
     } else {
         document.getElementById('recapDureeJoursValue').textContent = dureeJours;
     }
-    
+
     if (selectedCategory === 'chantier') {
         document.getElementById('recapProportionValue').textContent = proportionHommes + '% hommes, ' + (100 - proportionHommes) + '% femmes';
     }
-    
-    // Aller à la page de résultats
+
     goToPage(4);
 }
 
-// Calcul du nombre de WC nécessaires
 function calculateWC() {
     let nombreWC = 0;
     let detailsHommes = 0;
     let detailsFemmes = 0;
-    
+
     if (selectedCategory === 'evenementiel') {
-        // Pour les événements
         let nombreCabines = 0;
-        
+
         if (!dureeSuperieureA6h) {
-            // Événement inférieur à 6h
-            if (nombrePersonnes <= 65) {
-                nombreCabines = 1;
-            } else if (nombrePersonnes <= 130) {
-                nombreCabines = 2;
-            } else if (nombrePersonnes <= 195) {
-                nombreCabines = 3;
-            } else {
-                nombreCabines = 3 + Math.ceil((nombrePersonnes - 195) / 65);
-            }
+            nombreCabines = Math.ceil(nombrePersonnes / 65);
         } else {
-            // Événement supérieur à 6h
-            if (nombrePersonnes <= 35) {
-                nombreCabines = 1;
-            } else if (nombrePersonnes <= 70) {
-                nombreCabines = 2;
-            } else if (nombrePersonnes <= 105) {
-                nombreCabines = 3;
-            } else {
-                nombreCabines = 3 + Math.ceil((nombrePersonnes - 105) / 35);
-            }
+            nombreCabines = Math.ceil(nombrePersonnes / 35);
         }
-        
+
         nombreWC = Math.max(1, nombreCabines);
     } 
-    else if (selectedCategory === 'chantier') {
-        // Pour les chantiers
-        let nombreCabinesHommes = 0;
-        let nombreCabinesFemmes = 0;
-        
-        const propH = proportionHommes / 100;
-        const propF = 1 - propH;
-        
+    else if (selectedCategory === 'chantier' || selectedCategory === 'industrie') {
+        let propH = selectedCategory === 'industrie' ? 0.5 : proportionHommes / 100;
+        let propF = 1 - propH;
+
         const nbHommes = Math.ceil(nombrePersonnes * propH);
         const nbFemmes = Math.ceil(nombrePersonnes * propF);
-        
-        // Calcul pour les hommes
-        if (nbHommes <= 7) {
-            nombreCabinesHommes = 1;
-        } else if (nbHommes <= 14) {
-            nombreCabinesHommes = 2;
-        } else if (nbHommes <= 21) {
-            nombreCabinesHommes = 3;
-        } else {
-            nombreCabinesHommes = 3 + Math.ceil((nbHommes - 21) / 7);
-        }
-        
-        // Calcul pour les femmes
-        if (nbFemmes <= 7) {
-            nombreCabinesFemmes = 1;
-        } else if (nbFemmes <= 14) {
-            nombreCabinesFemmes = 2;
-        } else if (nbFemmes <= 21) {
-            nombreCabinesFemmes = 3;
-        } else {
-            nombreCabinesFemmes = 3 + Math.ceil((nbFemmes - 21) / 7);
-        }
-        
-        // Facteur de durée pour chantiers longue durée
-        const facteurDuree = dureeJours > 30 ? 1.2 : 1;
+
+        const getCabines = nb => nb <= 7 ? 1 : nb <= 14 ? 2 : nb <= 21 ? 3 : 3 + Math.ceil((nb - 21) / 7);
+
+        let nombreCabinesHommes = getCabines(nbHommes);
+        let nombreCabinesFemmes = getCabines(nbFemmes);
+
+        const facteurDuree = selectedCategory === 'industrie'
+            ? Math.min(1.5, 1 + (dureeJours / 180))
+            : (dureeJours > 30 ? 1.2 : 1);
+
         nombreCabinesHommes = Math.ceil(nombreCabinesHommes * facteurDuree);
         nombreCabinesFemmes = Math.ceil(nombreCabinesFemmes * facteurDuree);
-        
+
         if (genre === 'mixte') {
             nombreWC = Math.max(nombreCabinesHommes, nombreCabinesFemmes);
         } else {
             nombreWC = nombreCabinesHommes + nombreCabinesFemmes;
         }
-        
+
         detailsHommes = nombreCabinesHommes;
         detailsFemmes = nombreCabinesFemmes;
     }
-    else if (selectedCategory === 'industrie') {
-        // Pour l'industrie, même calcul que chantier mais avec répartition 50/50
-        let nombreCabinesHommes = 0;
-        let nombreCabinesFemmes = 0;
-        
-        const propH = 0.5;
-        const propF = 0.5;
-        
-        const nbHommes = Math.ceil(nombrePersonnes * propH);
-        const nbFemmes = Math.ceil(nombrePersonnes * propF);
-        
-        // Calcul pour les hommes
-        if (nbHommes <= 7) {
-            nombreCabinesHommes = 1;
-        } else if (nbHommes <= 14) {
-            nombreCabinesHommes = 2;
-        } else if (nbHommes <= 21) {
-            nombreCabinesHommes = 3;
-        } else {
-            nombreCabinesHommes = 3 + Math.ceil((nbHommes - 21) / 7);
-        }
-        
-        // Calcul pour les femmes
-        if (nbFemmes <= 7) {
-            nombreCabinesFemmes = 1;
-        } else if (nbFemmes <= 14) {
-            nombreCabinesFemmes = 2;
-        } else if (nbFemmes <= 21) {
-            nombreCabinesFemmes = 3;
-        } else {
-            nombreCabinesFemmes = 3 + Math.ceil((nbFemmes - 21) / 7);
-        }
-        
-        // Facteur de durée pour projets longue durée
-        const facteurDuree = Math.min(1.5, 1 + (dureeJours / 180));
-        nombreCabinesHommes = Math.ceil(nombreCabinesHommes * facteurDuree);
-        nombreCabinesFemmes = Math.ceil(nombreCabinesFemmes * facteurDuree);
-        
-        if (genre === 'mixte') {
-            nombreWC = Math.max(nombreCabinesHommes, nombreCabinesFemmes);
-        } else {
-            nombreWC = nombreCabinesHommes + nombreCabinesFemmes;
-        }
-        
-        detailsHommes = nombreCabinesHommes;
-        detailsFemmes = nombreCabinesFemmes;
-    }
-    
+
     return {
         total: nombreWC,
         hommes: detailsHommes,
@@ -312,19 +207,14 @@ function calculateWC() {
     };
 }
 
-// Réinitialiser le calculateur
 function resetCalculator() {
-    console.log("Réinitialisation du calculateur");
-    
-    // Réinitialiser les variables
     selectedCategory = '';
     nombrePersonnes = 0;
     dureeJours = 1;
     genre = 'mixte';
     dureeSuperieureA6h = false;
     proportionHommes = 70;
-    
-    // Réinitialiser les formulaires
+
     document.getElementById('nombrePersonnes').value = '';
     document.getElementById('dureeJours').value = '1';
     document.getElementById('genreMixte').checked = true;
@@ -332,112 +222,60 @@ function resetCalculator() {
     document.getElementById('dureeEvenement').value = 'inferieur';
     document.getElementById('proportionHommes').value = '70';
     document.getElementById('proportionLabel').textContent = '70% hommes, 30% femmes';
-    
-    // Désélectionner tous les boutons de catégorie
+
     document.querySelectorAll('.category-button').forEach(btn => {
         btn.classList.remove('selected');
     });
-    
-    // Désactiver les boutons suivants
+
     document.getElementById('nextBtn1').classList.add('btn-disabled');
     document.getElementById('nextBtn2').classList.add('btn-disabled');
-    
-    // Retourner à la première page
+
     goToPage(1);
 }
 
-// Initialisation au chargement de la page
-document.addEventListener('DOMContentLoaded', function() {
+// Initialisation
+document.addEventListener('DOMContentLoaded', function () {
     try {
-        console.log("DOM chargé, initialisation du simulateur...");
-        
-        // Ajouter des événements explicites sur les boutons de catégorie
         document.querySelectorAll('.category-button').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const category = this.getAttribute('data-category');
                 selectCategory(category, this);
             });
         });
-        
-        // Initialiser le bouton Suivant de la page 1
+
         const nextBtn1 = document.getElementById('nextBtn1');
         if (nextBtn1) {
-            nextBtn1.addEventListener('click', function() {
+            nextBtn1.addEventListener('click', function () {
                 if (!this.classList.contains('btn-disabled')) {
                     goToPage(2);
                 }
             });
         }
-        
-        // Initialiser les boutons de la page 2
-        const backBtn2 = document.querySelector('#page2 .nav-buttons .btn-back');
-        if (backBtn2) {
-            backBtn2.addEventListener('click', function() {
-                goToPage(1);
-            });
-        }
-        
+
         const nextBtn2 = document.getElementById('nextBtn2');
-if (nextBtn2) {
-    nextBtn2.addEventListener('click', function () {
-        if (!this.classList.contains('btn-disabled')) {
-            goToPage(3);
-        }
-    });
-
-        }
-
-        // Boutons page 3
-        const backBtn3 = document.querySelector('#page3 .btn-back');
-        if (backBtn3) {
-            backBtn3.addEventListener('click', function () {
-                goToPage(2);
+        if (nextBtn2) {
+            nextBtn2.addEventListener('click', function () {
+                if (!this.classList.contains('btn-disabled')) {
+                    goToPage(3);
+                }
             });
         }
 
-        const calculerBtn = document.querySelector('#page3 .btn-next');
-        if (calculerBtn) {
-            calculerBtn.addEventListener('click', function () {
-                calculerResultat();
-            });
-        }
+        document.querySelector('#page2 .btn-back').addEventListener('click', () => goToPage(1));
+        document.querySelector('#page3 .btn-back').addEventListener('click', () => goToPage(2));
+        document.querySelector('#page3 .btn-next').addEventListener('click', calculerResultat);
+        document.querySelector('#page4 .btn-back').addEventListener('click', () => goToPage(3));
+        document.querySelector('#page4 .btn-next').addEventListener('click', resetCalculator);
 
-        // Boutons page 4
-        const backBtn4 = document.querySelector('#page4 .btn-back');
-        if (backBtn4) {
-            backBtn4.addEventListener('click', function () {
-                goToPage(3);
-            });
-        }
-
-        const restartBtn = document.querySelector('#page4 .btn-next');
-        if (restartBtn) {
-            restartBtn.addEventListener('click', function () {
-                resetCalculator();
-            });
-        }
-
-        // Suivi des inputs
         document.getElementById('nombrePersonnes').addEventListener('input', checkPersonnes);
         document.getElementById('dureeEvenement').addEventListener('change', setDureeEvenement);
         document.getElementById('proportionHommes').addEventListener('input', updateProportion);
 
-        // Choix du genre
-        document.getElementById('genreMixte').addEventListener('change', function () {
-            if (this.checked) setGenre('mixte');
-        });
+        document.getElementById('genreMixte').addEventListener('change', () => setGenre('mixte'));
+        document.getElementById('genreSepare').addEventListener('change', () => setGenre('separe'));
 
-        document.getElementById('genreSepare').addEventListener('change', function () {
-            if (this.checked) setGenre('separe');
-        });
-
-        // Page initiale
         goToPage(1);
-
     } catch (e) {
         logError(e);
     }
 });
-
-
-            
