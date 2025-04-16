@@ -214,3 +214,13 @@ body {
 .page.active {
     display: block;
 }
+
+@media (max-width: 600px) {
+    .category-buttons {
+        gap: 16px;
+    }
+
+    .category-button {
+        width: 100%;
+    }
+}
