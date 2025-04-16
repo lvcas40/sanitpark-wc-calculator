@@ -1,3 +1,35 @@
+// Au début du script, ajoutez cette fonction pour détecter les erreurs
+function logError(error) {
+    console.error("Erreur détectée:", error);
+}
+
+// Initialisation au chargement de la page avec gestion d'erreur
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        console.log("DOM chargé, initialisation du simulateur...");
+        
+        // Ajouter des événements explicites sur les boutons de catégorie
+        document.querySelectorAll('.category-button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const category = this.getAttribute('data-category') || this.querySelector('span:last-child').textContent.toLowerCase().trim();
+                selectCategory(category, this);
+            });
+        });
+        
+        // Initialiser autres éléments comme inputs, etc.
+        const nombrePersonnesInput = document.getElementById('nombrePersonnes');
+        if (nombrePersonnesInput) {
+            nombrePersonnesInput.addEventListener('input', checkPersonnes);
+        }
+        
+        goToPage(1);
+        console.log("Simulateur initialisé avec succès");
+    } catch (error) {
+        logError(error);
+    }
+});
+
+
 // Variables globales
 let selectedCategory = '';
 let nombrePersonnes = 0;
