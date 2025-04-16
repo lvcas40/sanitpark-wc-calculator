@@ -216,11 +216,13 @@ body {
 }
 
 @media (max-width: 600px) {
-    .category-buttons {
-        gap: 16px;
+    .nav-buttons {
+        flex-direction: column !important;
+        align-items: stretch;
     }
 
-    .category-button {
+    .nav-buttons .btn {
         width: 100%;
     }
 }
+
