@@ -378,4 +378,66 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         const nextBtn2 = document.getElementById('nextBtn2');
-        if (nextBtn
+if (nextBtn2) {
+    nextBtn2.addEventListener('click', function () {
+        if (!this.classList.contains('btn-disabled')) {
+            goToPage(3);
+        }
+    });
+
+        }
+
+        // Boutons page 3
+        const backBtn3 = document.querySelector('#page3 .btn-back');
+        if (backBtn3) {
+            backBtn3.addEventListener('click', function () {
+                goToPage(2);
+            });
+        }
+
+        const calculerBtn = document.querySelector('#page3 .btn-next');
+        if (calculerBtn) {
+            calculerBtn.addEventListener('click', function () {
+                calculerResultat();
+            });
+        }
+
+        // Boutons page 4
+        const backBtn4 = document.querySelector('#page4 .btn-back');
+        if (backBtn4) {
+            backBtn4.addEventListener('click', function () {
+                goToPage(3);
+            });
+        }
+
+        const restartBtn = document.querySelector('#page4 .btn-next');
+        if (restartBtn) {
+            restartBtn.addEventListener('click', function () {
+                resetCalculator();
+            });
+        }
+
+        // Suivi des inputs
+        document.getElementById('nombrePersonnes').addEventListener('input', checkPersonnes);
+        document.getElementById('dureeEvenement').addEventListener('change', setDureeEvenement);
+        document.getElementById('proportionHommes').addEventListener('input', updateProportion);
+
+        // Choix du genre
+        document.getElementById('genreMixte').addEventListener('change', function () {
+            if (this.checked) setGenre('mixte');
+        });
+
+        document.getElementById('genreSepare').addEventListener('change', function () {
+            if (this.checked) setGenre('separe');
+        });
+
+        // Page initiale
+        goToPage(1);
+
+    } catch (e) {
+        logError(e);
+    }
+});
+
+
+            
