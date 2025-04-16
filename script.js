@@ -1,35 +1,3 @@
-// Au début du script, ajoutez cette fonction pour détecter les erreurs
-function logError(error) {
-    console.error("Erreur détectée:", error);
-}
-
-// Initialisation au chargement de la page avec gestion d'erreur
-document.addEventListener('DOMContentLoaded', function() {
-    try {
-        console.log("DOM chargé, initialisation du simulateur...");
-        
-        // Ajouter des événements explicites sur les boutons de catégorie
-        document.querySelectorAll('.category-button').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const category = this.getAttribute('data-category') || this.querySelector('span:last-child').textContent.toLowerCase().trim();
-                selectCategory(category, this);
-            });
-        });
-        
-        // Initialiser autres éléments comme inputs, etc.
-        const nombrePersonnesInput = document.getElementById('nombrePersonnes');
-        if (nombrePersonnesInput) {
-            nombrePersonnesInput.addEventListener('input', checkPersonnes);
-        }
-        
-        goToPage(1);
-        console.log("Simulateur initialisé avec succès");
-    } catch (error) {
-        logError(error);
-    }
-});
-
-
 // Variables globales
 let selectedCategory = '';
 let nombrePersonnes = 0;
@@ -37,6 +5,11 @@ let dureeJours = 1;
 let genre = 'mixte';
 let dureeSuperieureA6h = false;
 let proportionHommes = 70;
+
+// Fonction pour gérer les erreurs
+function logError(error) {
+    console.error("Erreur détectée:", error);
+}
 
 // Sélection de catégorie
 function selectCategory(category, button) {
@@ -91,6 +64,8 @@ function checkPersonnes() {
 
 // Changer la page
 function goToPage(pageNumber) {
+    console.log("Navigation vers la page", pageNumber);
+    
     if (pageNumber === 2 && document.getElementById('nextBtn1').classList.contains('btn-disabled')) {
         return;
     }
@@ -154,11 +129,14 @@ function updateProportion() {
 
 // Calculer le résultat
 function calculerResultat() {
+    console.log("Calcul du résultat...");
+    
     // Récupérer les valeurs finales des champs
     dureeJours = parseInt(document.getElementById('dureeJours').value) || 1;
     
     // Calculer le nombre de WC nécessaires
     let resultat = calculateWC();
+    console.log("Résultat calculé:", resultat);
     
     // Afficher les résultats
     document.getElementById('resultatWC').textContent = resultat.total;
@@ -336,6 +314,8 @@ function calculateWC() {
 
 // Réinitialiser le calculateur
 function resetCalculator() {
+    console.log("Réinitialisation du calculateur");
+    
     // Réinitialiser les variables
     selectedCategory = '';
     nombrePersonnes = 0;
@@ -368,6 +348,34 @@ function resetCalculator() {
 
 // Initialisation au chargement de la page
 document.addEventListener('DOMContentLoaded', function() {
-    // S'assurer que tous les éléments sont bien configurés au démarrage
-    goToPage(1);
-});
+    try {
+        console.log("DOM chargé, initialisation du simulateur...");
+        
+        // Ajouter des événements explicites sur les boutons de catégorie
+        document.querySelectorAll('.category-button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                selectCategory(category, this);
+            });
+        });
+        
+        // Initialiser le bouton Suivant de la page 1
+        const nextBtn1 = document.getElementById('nextBtn1');
+        if (nextBtn1) {
+            nextBtn1.addEventListener('click', function() {
+                if (!this.classList.contains('btn-disabled')) {
+                    goToPage(2);
+                }
+            });
+        }
+        
+        // Initialiser les boutons de la page 2
+        const backBtn2 = document.querySelector('#page2 .nav-buttons .btn-back');
+        if (backBtn2) {
+            backBtn2.addEventListener('click', function() {
+                goToPage(1);
+            });
+        }
+        
+        const nextBtn2 = document.getElementById('nextBtn2');
+        if (nextBtn
