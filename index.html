@@ -1,190 +1,153 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.5">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur de Besoin en WC - SanitPark</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="fr"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Simulateur de Besoin en WC - SanitPark&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="styles.css"&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="header"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;J'AI BESOIN DE COMBIEN DE WC ?&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Grâce à notre calculateur, estimez le nombre de WC nécessaires pour votre projet&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="progress-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-bar"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-number active" id="step1"&gt;1&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="progress-line" id="line1"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-number" id="step2"&gt;2&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="progress-line" id="line2"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-number" id="step3"&gt;3&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="progress-line" id="line3"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-number" id="step4"&gt;4&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Page 1 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="content page active" id="page1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="page-title"&gt;Votre besoin pour...&lt;/h2&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="category-buttons"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="category-button" onclick="selectCategory('evenementiel', this)"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="category-icon"&gt;🎵&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;L'ÉVÉNEMENTIEL&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="category-button" onclick="selectCategory('industrie', this)"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="category-icon"&gt;🏭&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;L'INDUSTRIE&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="category-button" onclick="selectCategory('chantier', this)"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="category-icon"&gt;👷&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;LES CHANTIERS&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="nav-buttons"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-next btn-disabled" id="nextBtn1" onclick="goToPage(2)"&gt;Suivant&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Page 2 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="content page" id="page2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="page-title"&gt;Quel sera votre nombre de participants au pic de jauge ?&lt;/h2&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label for="nombrePersonnes"&gt;Nombre de personnes&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="number" id="nombrePersonnes" min="1" placeholder="Nombre de participants" oninput="checkPersonnes()"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group" id="dureeJoursGroup"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label for="dureeJours"&gt;Durée (en jours)&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="number" id="dureeJours" min="1" max="365" value="1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label&gt;Type d'installation&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="radio-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="radio-option"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="radio" id="genreMixte" name="genre" value="mixte" checked onclick="setGenre('mixte')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="genreMixte"&gt;WC mixtes&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="radio-option"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="radio" id="genreSepare" name="genre" value="separe" onclick="setGenre('separe')"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="genreSepare"&gt;WC séparés H/F&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="nav-buttons"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-back" onclick="goToPage(1)"&gt;Précédent&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-next btn-disabled" id="nextBtn2" onclick="goToPage(3)"&gt;Suivant&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Page 3 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="content page" id="page3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="page-title" id="page3Title"&gt;Préférences supplémentaires&lt;/h2&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group" id="dureeEvenementGroup" style="display:none;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label for="dureeEvenement"&gt;Durée de l'événement&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;select id="dureeEvenement" onchange="setDureeEvenement()"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="inferieur"&gt;INFÉRIEUR À 6H&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="superieur"&gt;SUPÉRIEUR À 6H&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group" id="proportionHommesGroup" style="display:none;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label for="proportionHommes"&gt;Répartition hommes/femmes: &lt;span id="proportionLabel"&gt;70% hommes, 30% femmes&lt;/span&gt;&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="range" id="proportionHommes" min="0" max="100" value="70" oninput="updateProportion()"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label&gt;Accessibilité PMR requise ?&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="radio-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="radio-option"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="radio" id="pmrOui" name="pmr" value="oui"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="pmrOui"&gt;Oui&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="radio-option"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="radio" id="pmrNon" name="pmr" value="non" checked&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="pmrNon"&gt;Non&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="nav-buttons"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-back" onclick="goToPage(2)"&gt;Précédent&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-next" onclick="calculerResultat()"&gt;Calculer&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Page 4 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="content page" id="page4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="page-title"&gt;Résultat&lt;/h2&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="result-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 style="font-size: 18px; font-weight: bold; color: #0092d1;"&gt;Recommandation pour votre projet&lt;/h3&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="result-number" id="resultatWC"&gt;0&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="result-label"&gt;WC recommandés&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="details-container" id="detailsGenre" style="display:none;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="summary-title"&gt;Détail par genre&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="gender-details"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="gender-box"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="gender-number" id="resultHommes"&gt;0&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;WC Hommes&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="gender-box"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="gender-number" id="resultFemmes"&gt;0&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;WC Femmes&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="details-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="summary-title"&gt;Récapitulatif&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul class="summary-list"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Catégorie: &lt;span id="recapCategorie"&gt;&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li id="recapDureeEvent" style="display:none;"&gt;Durée: &lt;span id="recapDureeEventValue"&gt;&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li id="recapProportion" style="display:none;"&gt;Répartition: &lt;span id="recapProportionValue"&gt;&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Nombre de personnes: &lt;span id="recapNbPersonnes"&gt;&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li id="recapDureeJours" style="display:none;"&gt;Durée: &lt;span id="recapDureeJoursValue"&gt;&lt;/span&gt; jour(s)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Type d'installation: &lt;span id="recapGenre"&gt;&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="margin-top: 15px; font-size: 13px; color: #666;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Ce calcul est une estimation basée sur les normes standards. Les besoins peuvent varier selon les spécificités de votre situation.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="nav-buttons"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-back" onclick="goToPage(3)"&gt;Modifier les paramètres&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-next" onclick="resetCalculator()"&gt;Nouveau calcul&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="script.js"&gt;&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
-</body>
-</html>
+    <div class="container">
+        <div class="header">
+            <h1>J'AI BESOIN DE COMBIEN DE WC ?</h1>
+            <p>Grâce à notre calculateur, estimez le nombre de WC nécessaires pour votre projet</p>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="step-number active" id="step1">1</div>
+                <div class="progress-line" id="line1"></div>
+                <div class="step-number" id="step2">2</div>
+                <div class="progress-line" id="line2"></div>
+                <div class="step-number" id="step3">3</div>
+                <div class="progress-line" id="line3"></div>
+                <div class="step-number" id="step4">4</div>
+            </div>
+        </div>
+        
+        <!-- Page 1 -->
+        <div class="content page active" id="page1">
+            <h2 class="page-title">Votre besoin pour...</h2>
+            
+            <div class="category-buttons">
+                <button class="category-button" onclick="selectCategory('evenementiel', this)">
+                    <span class="category-icon">🎵</span>
+                    <span>L'ÉVÉNEMENTIEL</span>
+                </button>
+                <button class="category-button" onclick="selectCategory('industrie', this)">
+                    <span class="category-icon">🏭</span>
+                    <span>L'INDUSTRIE</span>
+                </button>
+                <button class="category-button" onclick="selectCategory('chantier', this)">
+                    <span class="category-icon">👷</span>
+                    <span>LES CHANTIERS</span>
+                </button>
+            </div>
+            
+            <div class="nav-buttons">
+                <div></div>
+                <button class="btn btn-next btn-disabled" id="nextBtn1" onclick="goToPage(2)">Suivant</button>
+            </div>
+        </div>
+        
+        <!-- Page 2 -->
+        <div class="content page" id="page2">
+            <h2 class="page-title">Quel sera votre nombre de participants au pic de jauge ?</h2>
+            
+            <div class="form-group">
+                <label for="nombrePersonnes">Nombre de personnes</label>
+                <input type="number" id="nombrePersonnes" min="1" placeholder="Nombre de participants" oninput="checkPersonnes()">
+            </div>
+            
+            <div class="form-group" id="dureeJoursGroup">
+                <label for="dureeJours">Durée (en jours)</label>
+                <input type="number" id="dureeJours" min="1" max="365" value="1">
+            </div>
+            
+            <div class="form-group">
+                <label>Type d'installation</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="genreMixte" name="genre" value="mixte" checked onclick="setGenre('mixte')">
+                        <label for="genreMixte">WC mixtes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="genreSepare" name="genre" value="separe" onclick="setGenre('separe')">
+                        <label for="genreSepare">WC séparés H/F</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="btn btn-back" onclick="goToPage(1)">Précédent</button>
+                <button class="btn btn-next btn-disabled" id="nextBtn2" onclick="goToPage(3)">Suivant</button>
+            </div>
+        </div>
+        
+        <!-- Page 3 -->
+        <div class="content page" id="page3">
+            <h2 class="page-title" id="page3Title">Préférences supplémentaires</h2>
+            
+            <div class="form-group" id="dureeEvenementGroup" style="display:none;">
+                <label for="dureeEvenement">Durée de l'événement</label>
+                <select id="dureeEvenement" onchange="setDureeEvenement()">
+                    <option value="inferieur">INFÉRIEUR À 6H</option>
+                    <option value="superieur">SUPÉRIEUR À 6H</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="proportionHommesGroup" style="display:none;">
+                <label for="proportionHommes">Répartition hommes/femmes: <span id="proportionLabel">70% hommes, 30% femmes</span></label>
+                <input type="range" id="proportionHommes" min="0" max="100" value="70" oninput="updateProportion()">
+            </div>
+            
+            <div class="form-group">
+                <label>Accessibilité PMR requise ?</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="pmrOui" name="pmr" value="oui">
+                        <label for="pmrOui">Oui</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="pmrNon" name="pmr" value="non" checked>
+                        <label for="pmrNon">Non</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="btn btn-back" onclick="goToPage(2)">Précédent</button>
+                <button class="btn btn-next" onclick="calculerResultat()">Calculer</button>
+            </div>
+        </div>
+        
+        <!-- Page 4 -->
+        <div class="content page" id="page4">
+            <h2 class="page-title">Résultat</h2>
+            
+            <div class="result-container">
+                <h3 style="font-size: 18px; font-weight: bold; color: #0092d1;">Recommandation pour votre projet</h3>
+                
+                <div class="result-number" id="resultatWC">0</div>
+                <div class="result-label">WC recommandés</div>
+                
+                <div class="details-container" id="detailsGenre" style="display:none;">
+                    <h4 class="summary-title">Détail par genre</h4>
+                    <div class="gender-details">
+                        <div class="gender-box">
+                            <div class="gender-number" id="resultHommes">0</div>
+                            <div>WC Hommes</div>
+                        </div>
+                        <div class="gender-box">
+                            <div class="gender-number" id="resultFemmes">0</div>
+                            <div>WC Femmes</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="details-container">
+                    <h4 class="summary-title">Récapitulatif</h4>
+                    <ul class="summary-list">
+                        <li>Catégorie: <span id="recapCategorie"></span></li>
+                        <li id="recapDu
+                        
