@@ -25,31 +25,29 @@
                 <div class="step-number" id="step4">4</div>
             </div>
         </div>
-
-        
         
         <!-- Page 1 -->
         <div class="content page active" id="page1">
             <h2 class="page-title">Votre besoin pour...</h2>
             
-<div class="category-buttons">
-    <button class="category-button" data-category="evenementiel">
-        <span class="category-icon">🎵</span>
-        <span>L'ÉVÉNEMENTIEL</span>
-    </button>
-    <button class="category-button" data-category="industrie">
-        <span class="category-icon">🏭</span>
-        <span>L'INDUSTRIE</span>
-    </button>
-    <button class="category-button" data-category="chantier">
-        <span class="category-icon">👷</span>
-        <span>LES CHANTIERS</span>
-    </button>
-</div>
+            <div class="category-buttons">
+                <button class="category-button" data-category="evenementiel">
+                    <span class="category-icon">🎵</span>
+                    <span>L'ÉVÉNEMENTIEL</span>
+                </button>
+                <button class="category-button" data-category="industrie">
+                    <span class="category-icon">🏭</span>
+                    <span>L'INDUSTRIE</span>
+                </button>
+                <button class="category-button" data-category="chantier">
+                    <span class="category-icon">👷</span>
+                    <span>LES CHANTIERS</span>
+                </button>
+            </div>
             
             <div class="nav-buttons">
                 <div></div>
-                <button class="btn btn-next btn-disabled" id="nextBtn1" onclick="goToPage(2)">Suivant</button>
+                <button class="btn btn-next btn-disabled" id="nextBtn1">Suivant</button>
             </div>
         </div>
         
@@ -59,7 +57,7 @@
             
             <div class="form-group">
                 <label for="nombrePersonnes">Nombre de personnes</label>
-                <input type="number" id="nombrePersonnes" min="1" placeholder="Nombre de participants" oninput="checkPersonnes()">
+                <input type="number" id="nombrePersonnes" min="1" placeholder="Nombre de participants">
             </div>
             
             <div class="form-group" id="dureeJoursGroup">
@@ -71,19 +69,19 @@
                 <label>Type d'installation</label>
                 <div class="radio-group">
                     <div class="radio-option">
-                        <input type="radio" id="genreMixte" name="genre" value="mixte" checked onclick="setGenre('mixte')">
+                        <input type="radio" id="genreMixte" name="genre" value="mixte" checked>
                         <label for="genreMixte">WC mixtes</label>
                     </div>
                     <div class="radio-option">
-                        <input type="radio" id="genreSepare" name="genre" value="separe" onclick="setGenre('separe')">
+                        <input type="radio" id="genreSepare" name="genre" value="separe">
                         <label for="genreSepare">WC séparés H/F</label>
                     </div>
                 </div>
             </div>
             
             <div class="nav-buttons">
-                <button class="btn btn-back" onclick="goToPage(1)">Précédent</button>
-                <button class="btn btn-next btn-disabled" id="nextBtn2" onclick="goToPage(3)">Suivant</button>
+                <button class="btn btn-back">Précédent</button>
+                <button class="btn btn-next btn-disabled" id="nextBtn2">Suivant</button>
             </div>
         </div>
         
@@ -93,7 +91,7 @@
             
             <div class="form-group" id="dureeEvenementGroup" style="display:none;">
                 <label for="dureeEvenement">Durée de l'événement</label>
-                <select id="dureeEvenement" onchange="setDureeEvenement()">
+                <select id="dureeEvenement">
                     <option value="inferieur">INFÉRIEUR À 6H</option>
                     <option value="superieur">SUPÉRIEUR À 6H</option>
                 </select>
@@ -101,7 +99,7 @@
             
             <div class="form-group" id="proportionHommesGroup" style="display:none;">
                 <label for="proportionHommes">Répartition hommes/femmes: <span id="proportionLabel">70% hommes, 30% femmes</span></label>
-                <input type="range" id="proportionHommes" min="0" max="100" value="70" oninput="updateProportion()">
+                <input type="range" id="proportionHommes" min="0" max="100" value="70">
             </div>
             
             <div class="form-group">
@@ -119,8 +117,8 @@
             </div>
             
             <div class="nav-buttons">
-                <button class="btn btn-back" onclick="goToPage(2)">Précédent</button>
-                <button class="btn btn-next" onclick="calculerResultat()">Calculer</button>
+                <button class="btn btn-back">Précédent</button>
+                <button class="btn btn-next">Calculer</button>
             </div>
         </div>
         
@@ -152,5 +150,24 @@
                     <h4 class="summary-title">Récapitulatif</h4>
                     <ul class="summary-list">
                         <li>Catégorie: <span id="recapCategorie"></span></li>
-                        <li id="recapDu
-                        
+                        <li id="recapDureeEvent" style="display:none;">Durée: <span id="recapDureeEventValue"></span></li>
+                        <li id="recapProportion" style="display:none;">Répartition: <span id="recapProportionValue"></span></li>
+                        <li>Nombre de personnes: <span id="recapNbPersonnes"></span></li>
+                        <li id="recapDureeJours" style="display:none;">Durée: <span id="recapDureeJoursValue"></span> jour(s)</li>
+                        <li>Type d'installation: <span id="recapGenre"></span></li>
+                    </ul>
+                </div>
+                
+                <div style="margin-top: 15px; font-size: 13px; color: #666;">
+                    <p>Ce calcul est une estimation basée sur les normes standards. Les besoins peuvent varier selon les spécificités de votre situation.</p>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="btn btn-back">Modifier les paramètres</button>
+                <button class="btn btn-next">Nouveau calcul</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
